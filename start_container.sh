@@ -4,7 +4,7 @@ IMAGE_NAME="gift_recommender_client"
 
 ROOT="$( pwd )"
 
-yarn
+npm install
 
 if [[ "$(docker images -q ${IMAGE_NAME}:latest 2> /dev/null)" == "" ]]; then
     echo " ----- Image Does Not Exist. Building Now. -----"

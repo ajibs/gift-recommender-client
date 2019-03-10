@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import 'src/App.css';
 import requestClient from 'src/libs/HttpRequestClient';
 
 class App extends Component {
