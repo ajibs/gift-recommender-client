@@ -1,0 +1,63 @@
+{
+  "name": "gift-recommender-client",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "dev": "run-p watch:styles start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:styles": "node-sass-chokidar ./assets/styles -o public/styles",
+    "watch:styles": "yarn build:styles --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "precommit": "lint-staged",
+    "postcommit": "git update-index --again"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "node_modules/**"
+    ]
+  },
+  "author": "Bolu Ajibawo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajibs/gift-recommender-client/issues"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "react": "16.8.4",
+    "react-dom": "16.8.4",
+    "react-scripts": "2.1.8"
+  },
+  "devDependencies": {
+    "eslint": "5.12.0",
+    "eslint-config-standard": "11.0.0",
+    "eslint-config-standard-react": "6.0.0",
+    "eslint-plugin-import": "2.12.0",
+    "eslint-plugin-jsx-a11y": "6.0.3",
+    "eslint-plugin-node": "6.0.1",
+    "eslint-plugin-promise": "3.8.0",
+    "eslint-plugin-react": "7.8.2",
+    "eslint-plugin-standard": "3.1.0",
+    "husky": "1.0.0-rc.15",
+    "lint-staged": "7.3.0",
+    "node-sass-chokidar": "1.3.4",
+    "npm-run-all": "4.1.3"
+  }
+}
