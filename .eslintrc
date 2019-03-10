@@ -1,0 +1,44 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "standard-react"
+  ],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "it": false
+  },
+  "rules": {
+    "semi": ["error", "always"],
+    "no-duplicate-imports":"error",
+    "import/order": ["error", {"newlines-between": "always"}],
+    "object-curly-spacing": ["error", "always"],
+    "space-infix-ops": "error",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-unused-vars": "error",
+    "no-param-reassign": "error",
+    "radix": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "no-useless-constructor": "error",
+    "no-useless-return": "error",
+    "import/prefer-default-export": "error",
+    "react/jsx-max-props-per-line": ["error", { "maximum": 1 }],
+    "react/jsx-closing-bracket-location": "error",
+    "react/jsx-first-prop-new-line": "error",
+    "react/require-default-props": "error",
+    "react/no-unused-state": "error",
+    "react/no-unused-prop-types": "error"
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "impliedStrict": true,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalDecorators": true
+    }
+  }
+}
