@@ -16,7 +16,7 @@
     "import/order": ["error", {"newlines-between": "always"}],
     "object-curly-spacing": ["error", "always"],
     "space-infix-ops": "error",
-    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
     "no-unused-vars": "error",
     "no-param-reassign": "error",
     "radix": "error",
