@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
+    "start:prod": "node server.js",
     "build": "react-scripts build",
     "dev": "run-p watch:styles start",
+    "setup:prod": "npm run build && npm run start:prod",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:styles": "node-sass-chokidar ./assets/styles -o public/styles",
@@ -42,6 +44,9 @@
   ],
   "dependencies": {
     "axios": "0.18.0",
+    "dotenv": "6.2.0",
+    "express": "4.16.4",
+    "path": "0.12.7",
     "prop-types": "15.7.2",
     "react": "16.8.4",
     "react-dom": "16.8.4",
