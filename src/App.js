@@ -66,11 +66,14 @@ class App extends Component {
       <div>
         <div className='row justify-content-center'>
           <div
-            className='col-md-4'
+            className='col-10 col-md-4'
             id={'searchGifts'}
           >
             <h4 className='jumbotron-heading'>Give us details about the friend you're getting a gift for and voila</h4>
-            <form onSubmit={this.handleSubmit}>
+            <form
+              onSubmit={this.handleSubmit}
+              style={{ marginTop: '6%' }}
+            >
               <div className='input-group mb-3'>
                 <div className='input-group-prepend'>
                   <label
