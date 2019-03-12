@@ -15,7 +15,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "precommit": "lint-staged",
-    "postcommit": "git update-index --again"
+    "postcommit": "git update-index --again",
+    "heroku:deploy": "heroku container:push web --app thawing-reef-23645 && heroku container:release web --app thawing-reef-23645"
   },
   "lint-staged": {
     "linters": {
