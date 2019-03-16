@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import requestClient from 'src/libs/HttpRequestClient';
-import SingleGiftIdea from 'src/components/GiftIdea/SingleGiftIdea';
+import SearchGiftIdea from 'src/components/GiftIdea/SearchGiftIdea';
 
 class App extends Component {
   constructor (props) {
     super(props);
     this.state = {
       budget: 'one_to_five_thousand',
-      giftItems: []
+      giftIdeas: []
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderGiftItems = this.renderGiftItems.bind(this);
   }
 
   handleInputChange (event) {
@@ -33,7 +32,7 @@ class App extends Component {
     requestClient.post('/gifts', payload)
       .then(res => {
         this.setState({
-          giftItems: res.data
+          giftIdeas: res.data
         });
       })
       .catch(error => {
@@ -41,72 +40,15 @@ class App extends Component {
       });
   }
 
-  renderGiftItems (data) {
-    return data.map(item => {
-      if (item.giftIdea) {
-        return (
-          <SingleGiftIdea
-            key={item.giftIdea.id}
-            title={item.giftIdea.label}
-            image_url={item.giftIdea.image_url}
-          />
-        );
-      }
-      return null;
-    });
-  }
-
   render () {
-    const { giftItems } = this.state;
+    const { giftIdeas, budget } = this.state;
     return (
-      <div>
-        <div className='row justify-content-center'>
-          <div
-            className='col-10 col-md-4'
-            id={'searchGifts'}
-          >
-            <h4 className='jumbotron-heading'>Give us details about the friend you're getting a gift for and voila</h4>
-            <form
-              onSubmit={this.handleSubmit}
-              style={{ marginTop: '6%' }}
-            >
-              <div className='input-group mb-3'>
-                <div className='input-group-prepend'>
-                  <label
-                    className='input-group-text'
-                    htmlFor='budget'
-                  >Budget in Naira</label>
-                </div>
-                <select
-                  name='budget'
-                  className='custom-select'
-                  id='budget'
-                  value={this.state.budget}
-                  onChange={this.handleInputChange}
-                >
-                  <option value='zero'>0</option>
-                  <option value='one_to_five_thousand'>1 - 5k</option>
-                  <option value='five_to_ten_thousand'>5.1 - 10k</option>
-                </select>
-              </div>
-              <button
-                type='submit'
-                className='btn btn-primary'
-              >Abracadabra</button>
-            </form>
-          </div>
-        </div>
-        <div
-          className='container'
-          style={{ marginTop: '3.5%' }}
-        >
-          <div className='row'>
-            {giftItems &&
-            this.renderGiftItems(giftItems)
-            }
-          </div>
-        </div>
-      </div>
+      <SearchGiftIdea
+        budget={budget}
+        giftIdeas={giftIdeas}
+        handleSubmit={this.handleSubmit}
+        handleInputChange={this.handleInputChange}
+      />
     );
   }
 }
