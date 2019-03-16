@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import requestClient from 'src/libs/HttpRequestClient';
-import SingleGift from 'src/components/GiftItem/SingleGift';
+import SingleGiftIdea from 'src/components/GiftIdea/SingleGiftIdea';
 
 class App extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      age: 'zero_to_fifteen',
       budget: 'one_to_five_thousand',
       giftItems: []
     };
@@ -28,8 +27,8 @@ class App extends Component {
 
   handleSubmit (event) {
     event.preventDefault();
-    const { age, budget } = this.state;
-    const payload = { age, budget };
+    const { budget } = this.state;
+    const payload = { budget };
 
     requestClient.post('/gifts', payload)
       .then(res => {
@@ -44,15 +43,12 @@ class App extends Component {
 
   renderGiftItems (data) {
     return data.map(item => {
-      if (item.gift) {
+      if (item.giftIdea) {
         return (
-          <SingleGift
-            key={item.gift.id}
-            title={item.gift.title}
-            description={item.gift.title}
-            price={item.gift.price}
-            product_link={item.gift.product_link}
-            image_url={item.gift.image_url}
+          <SingleGiftIdea
+            key={item.giftIdea.id}
+            title={item.giftIdea.label}
+            image_url={item.giftIdea.image_url}
           />
         );
       }
@@ -78,24 +74,6 @@ class App extends Component {
                 <div className='input-group-prepend'>
                   <label
                     className='input-group-text'
-                    htmlFor='age'
-                  >Age in Years</label>
-                </div>
-                <select
-                  name='age'
-                  className='custom-select'
-                  id='age_selection'
-                  value={this.state.age}
-                  onChange={this.handleInputChange}
-                >
-                  <option value='zero_to_fifteen'>0 - 15</option>
-                  <option value='sixteen_to_thirty'>16 - 30</option>
-                </select>
-              </div>
-              <div className='input-group mb-3'>
-                <div className='input-group-prepend'>
-                  <label
-                    className='input-group-text'
                     htmlFor='budget'
                   >Budget in Naira</label>
                 </div>
@@ -107,7 +85,8 @@ class App extends Component {
                   onChange={this.handleInputChange}
                 >
                   <option value='zero'>0</option>
-                  <option value='one_to_five_thousand'>1 - 5000</option>
+                  <option value='one_to_five_thousand'>1 - 5k</option>
+                  <option value='five_to_ten_thousand'>5.1 - 10k</option>
                 </select>
               </div>
               <button
