@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
-import requestClient from 'src/libs/HttpRequestClient';
+import React, { Component, Fragment } from 'react';
 import SearchGiftIdea from 'src/components/GiftIdea/SearchGiftIdea';
+import HomeLanding from 'src/components/HomeLanding';
+import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 
-class App extends Component {
+import HomeService from './Home.service';
+
+class Home extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -24,35 +28,37 @@ class App extends Component {
     });
   }
 
-  handleSubmit (event) {
+  async handleSubmit (event) {
     event.preventDefault();
     const { budget } = this.state;
     const payload = { budget };
 
-    requestClient.post('/gifts', payload)
-      .then(res => {
-        this.setState({
-          giftIdeas: res.data
-        });
-      })
-      .catch(error => {
-        throw error;
-      });
+    const result = await HomeService.searchGifts(payload);
+    this.setState({
+      giftIdeas: result
+    });
   }
 
   render () {
     const { giftIdeas, budget } = this.state;
     return (
-      <SearchGiftIdea
-        budget={budget}
-        giftIdeas={giftIdeas}
-        handleSubmit={this.handleSubmit}
-        handleInputChange={this.handleInputChange}
-      />
+      <Fragment>
+        <Header />
+        <main role='main'>
+          <HomeLanding />
+          <SearchGiftIdea
+            budget={budget}
+            giftIdeas={giftIdeas}
+            handleSubmit={this.handleSubmit}
+            handleInputChange={this.handleInputChange}
+          />
+        </main>
+        <Footer />
+      </Fragment>
     );
   }
   // link to explore page: all gift ideas
   // link gift idea to purchase link page
 }
 
-export default App;
+export default Home;

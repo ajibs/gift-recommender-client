@@ -24,7 +24,7 @@ const SearchGiftIdea = (props) => {
   } = props;
 
   return (
-    <div>
+    <div className='album py-5 bg-light'>
       <div className='row justify-content-center'>
         <div
           className='col-10 col-md-4'
