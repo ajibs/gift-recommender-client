@@ -46,7 +46,7 @@ class GiftIdeaListing extends Component {
           <div
             className='col-10 col-md-4'
           >
-            <h4 className='jumbotron-heading'>Here are all the gift ideas we have at the moment:</h4>
+            <h4 className='jumbotron-heading'>All the gift ideas we have at the moment:</h4>
           </div>
         </div>
         <div
