@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SingleGiftIdea from 'src/components/GiftIdea/SingleGiftIdea';
 
-const renderGiftItems = (data) => data.map(item => {
-  if (item.giftIdea) {
+const displayGiftIdeas = (data) => data.map(item => {
+  if (item && item.giftIdea && item.giftIdea.id && item.giftIdea.label && item.giftIdea.image_url) {
     return (
       <SingleGiftIdea
         key={item.giftIdea.id}
@@ -24,7 +24,7 @@ const SearchGiftIdea = (props) => {
   } = props;
 
   return (
-    <div className='album py-5 bg-light'>
+    <div>
       <div className='row justify-content-center'>
         <div
           className='col-10 col-md-4'
@@ -67,7 +67,7 @@ const SearchGiftIdea = (props) => {
       >
         <div className='row'>
           {giftIdeas &&
-            renderGiftItems(giftIdeas)
+            displayGiftIdeas(giftIdeas)
           }
         </div>
       </div>

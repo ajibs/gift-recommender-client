@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import SearchGiftIdea from 'src/components/GiftIdea/SearchGiftIdea';
 import HomeLanding from 'src/components/HomeLanding';
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import GiftIdeaListing from 'src/components/GiftIdea/GiftIdeaListing';
 
 import HomeService from './Home.service';
 
@@ -42,19 +44,34 @@ class Home extends Component {
   render () {
     const { giftIdeas, budget } = this.state;
     return (
-      <Fragment>
+      <Router>
+
         <Header />
         <main role='main'>
           <HomeLanding />
-          <SearchGiftIdea
-            budget={budget}
-            giftIdeas={giftIdeas}
-            handleSubmit={this.handleSubmit}
-            handleInputChange={this.handleInputChange}
-          />
+          <div className='album py-5 bg-light'>
+            <Switch>
+              <Route
+                exact
+                path='/'
+                render={() => (
+                  <SearchGiftIdea
+                    budget={budget}
+                    giftIdeas={giftIdeas}
+                    handleSubmit={this.handleSubmit}
+                    handleInputChange={this.handleInputChange}
+                  />)}
+              />
+              <Route
+                exact
+                path='/gift-idea'
+                render={() => <GiftIdeaListing />}
+              />
+            </Switch>
+          </div>
         </main>
         <Footer />
-      </Fragment>
+      </Router>
     );
   }
   // link to explore page: all gift ideas

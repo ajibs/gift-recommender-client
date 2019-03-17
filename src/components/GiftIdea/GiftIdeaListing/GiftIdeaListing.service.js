@@ -1,8 +1,8 @@
 import requestClient from 'src/libs/HttpRequestClient';
 
-export default class HomeService {
-  static searchGifts (payload) {
-    return requestClient.post('/gift', payload)
+export default class GiftIdeaListing {
+  static fetchGiftIdeas () {
+    return requestClient.get('/gift-idea')
       .then(res => res.data)
       .catch(error => {
         throw error;
