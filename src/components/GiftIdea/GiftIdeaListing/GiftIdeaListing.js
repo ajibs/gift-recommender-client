@@ -27,12 +27,14 @@ class GiftIdeaListing extends Component {
       if (gift && gift.id && gift.image_url && gift.label) {
         return (
           <SingleGiftIdea
+            id={gift.id}
             key={gift.id}
             image_url={gift.image_url}
             title={gift.label}
           />
         );
       }
+      return null;
     });
   }
 

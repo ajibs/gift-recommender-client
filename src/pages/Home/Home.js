@@ -5,6 +5,7 @@ import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GiftIdeaListing from 'src/components/GiftIdea/GiftIdeaListing';
+import PurchaseLinkListing from 'src/components/GiftItem/PurchaseLinkListing';
 
 import HomeService from './Home.service';
 
@@ -35,7 +36,10 @@ class Home extends Component {
     const { budget } = this.state;
     const payload = { budget };
 
-    const result = await HomeService.searchGifts(payload);
+    const result = await HomeService.searchGifts(payload)
+      .catch(error => {
+        throw error;
+      });
     this.setState({
       giftIdeas: result
     });
@@ -67,6 +71,11 @@ class Home extends Component {
                 path='/gift-idea'
                 render={() => <GiftIdeaListing />}
               />
+              <Route
+                exact
+                path='/gift/gift-idea/:gift_idea_id'
+                render={(props) => <PurchaseLinkListing {...props} />}
+              />
             </Switch>
           </div>
         </main>
@@ -74,8 +83,6 @@ class Home extends Component {
       </Router>
     );
   }
-  // link to explore page: all gift ideas
-  // link gift idea to purchase link page
 }
 
 export default Home;

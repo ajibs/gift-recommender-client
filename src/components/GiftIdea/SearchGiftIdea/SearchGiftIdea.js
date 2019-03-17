@@ -7,6 +7,7 @@ const displayGiftIdeas = (data) => data.map(item => {
     return (
       <SingleGiftIdea
         key={item.giftIdea.id}
+        id={item.giftIdea.id}
         title={item.giftIdea.label}
         image_url={item.giftIdea.image_url}
       />

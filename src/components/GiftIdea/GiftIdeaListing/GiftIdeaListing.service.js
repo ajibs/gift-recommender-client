@@ -1,6 +1,6 @@
 import requestClient from 'src/libs/HttpRequestClient';
 
-export default class GiftIdeaListing {
+export default class GiftIdeaListingService {
   static fetchGiftIdeas () {
     return requestClient.get('/gift-idea')
       .then(res => res.data)

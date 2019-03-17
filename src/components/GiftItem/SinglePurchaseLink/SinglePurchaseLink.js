@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SingleGiftItem = (props) => (
+const SinglePurchaseLink = (props) => (
   <div className='col-md-4'>
     <div className='card mb-4 shadow-sm'>
       <img
@@ -9,7 +9,7 @@ const SingleGiftItem = (props) => (
         alt={'product'}
       />
       <div className='card-body'>
-        <p className='card-text'>{props.description}</p>
+        <p className='card-text'>{props.title}</p>
         <div className='d-flex justify-content-between align-items-center'>
           <div className='btn-group'>
             <a
@@ -19,18 +19,18 @@ const SingleGiftItem = (props) => (
               className='btn btn-sm btn-outline-secondary'
             >Learn More</a>
           </div>
-          <small className='text-muted'>₦{props.price}</small>
+          <small className='text-muted'>₦{props.price || 'Not Available'}</small>
         </div>
       </div>
     </div>
   </div>
 );
 
-SingleGiftItem.propTypes = {
-  description: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+SinglePurchaseLink.propTypes = {
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   product_link: PropTypes.string.isRequired,
   image_url: PropTypes.string.isRequired
 };
 
-export default SingleGiftItem;
+export default SinglePurchaseLink;
