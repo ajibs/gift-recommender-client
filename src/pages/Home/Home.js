@@ -6,6 +6,7 @@ import Footer from 'src/components/Footer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GiftIdeaListing from 'src/components/GiftIdea/GiftIdeaListing';
 import PurchaseLinkListing from 'src/components/GiftItem/PurchaseLinkListing';
+import loadingIconService from 'src/components/LoadingIcon/LoadingIcon.service';
 
 import HomeService from './Home.service';
 
@@ -36,10 +37,14 @@ class Home extends Component {
     const { budget } = this.state;
     const payload = { budget };
 
+    loadingIconService.showIcon();
     const result = await HomeService.searchGifts(payload)
       .catch(error => {
+        loadingIconService.hideIcon();
         throw error;
       });
+
+    loadingIconService.hideIcon();
     this.setState({
       giftIdeas: result
     });
