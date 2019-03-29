@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SingleGiftIdea from 'src/components/GiftIdea/SingleGiftIdea';
+import LoadingIcon from 'src/components/LoadingIcon';
 
 const displayGiftIdeas = (data) => data.map(item => {
   if (item && item.giftIdea && item.giftIdea.id && item.giftIdea.label && item.giftIdea.image_url) {
@@ -60,6 +61,7 @@ const SearchGiftIdea = (props) => {
               className='btn btn-primary'
             >Abracadabra</button>
           </form>
+          <LoadingIcon />
         </div>
       </div>
       <div

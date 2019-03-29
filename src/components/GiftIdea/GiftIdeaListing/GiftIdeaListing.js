@@ -1,5 +1,7 @@
 import SingleGiftIdea from 'src/components/GiftIdea/SingleGiftIdea';
 import React, { Component } from 'react';
+import LoadingIcon from 'src/components/LoadingIcon';
+import loadingIconService from 'src/components/LoadingIcon/LoadingIcon.service';
 
 import GiftIdeaListingService from './GiftIdeaListing.service';
 
@@ -13,10 +15,16 @@ class GiftIdeaListing extends Component {
   }
 
   async componentDidMount () {
+    loadingIconService.showIcon();
     const giftIdeas = await GiftIdeaListingService.fetchGiftIdeas()
       .catch(error => {
+        loadingIconService.hideIcon();
+
         throw error;
       });
+
+    loadingIconService.hideIcon();
+
     this.setState({
       gifts: giftIdeas
     });
@@ -47,6 +55,7 @@ class GiftIdeaListing extends Component {
             className='col-10 col-md-4'
           >
             <h4 className='jumbotron-heading'>All the gift ideas we have at the moment:</h4>
+            <LoadingIcon />
           </div>
         </div>
         <div
