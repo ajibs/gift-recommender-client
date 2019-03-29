@@ -9,6 +9,7 @@ const SingleGiftIdea = (props) => (
         to={`/gift/gift-idea/${props.id}`}
       >
         <img
+          className={'img-fluid'}
           src={props.image_url}
           alt={'product'}
         />

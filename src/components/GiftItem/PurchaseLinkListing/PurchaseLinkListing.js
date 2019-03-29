@@ -23,7 +23,6 @@ class PurchaseLinkListing extends Component {
         throw error;
       });
 
-    console.log(gifts);
     if (gifts && gifts.length > 0 && gifts[0].giftIdea && gifts[0].giftIdea.label) {
       this.setState({
         gifts,

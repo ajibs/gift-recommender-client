@@ -5,6 +5,7 @@ const SinglePurchaseLink = (props) => (
   <div className='col-md-4'>
     <div className='card mb-4 shadow-sm'>
       <img
+        className={'img-fluid'}
         src={props.image_url}
         alt={'product'}
       />
