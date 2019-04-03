@@ -36,7 +36,7 @@ class PurchaseLinkListing extends Component {
     }
   }
 
-  displayGiftPurchaseLinks (gifts) {
+  fetchPurchaseLinks (gifts) {
     return gifts.map(gift => {
       if (gift) {
         return (
@@ -54,6 +54,23 @@ class PurchaseLinkListing extends Component {
     });
   }
 
+  displayGiftPurchaseLinks (gifts) {
+    const purchaseLinks = this.fetchPurchaseLinks(gifts);
+    return (
+      <div
+        className='container'
+        style={{ marginTop: '3.5%' }}
+      >
+        <div className='row'>        {purchaseLinks}
+          <p className='jumbotron-heading justify-content-center'>
+            Disclaimer: <strong>The links above are stuff we found online and we do not guarantee their authenticity.
+            Thus take care not to be scammed.</strong>
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   render () {
     const { gifts, giftIdeaLabel } = this.state;
     return (
@@ -68,14 +85,7 @@ class PurchaseLinkListing extends Component {
           </div>
         </div>
         <LoadingIcon />
-        <div
-          className='container'
-          style={{ marginTop: '3.5%' }}
-        >
-          <div className='row'>
-            {gifts && this.displayGiftPurchaseLinks(gifts)}
-          </div>
-        </div>
+        {gifts && this.displayGiftPurchaseLinks(gifts)}
       </div>
     );
   }
