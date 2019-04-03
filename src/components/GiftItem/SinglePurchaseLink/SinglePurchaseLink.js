@@ -20,7 +20,7 @@ const SinglePurchaseLink = (props) => (
               className='btn btn-sm btn-outline-secondary'
             >Learn More</a>
           </div>
-          <small className='text-muted'>{props.price ? `₦${props.price}` : 'Not Available'}</small>
+          <small className='text-muted'>{props.price ? `₦${props.price}` : 'Price Not Available'}</small>
         </div>
       </div>
     </div>

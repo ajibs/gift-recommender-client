@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import SinglePurchaseLink from '../SinglePurchaseLink';
+import LoadingIcon from 'src/components/LoadingIcon';
+import loadingIconService from 'src/components/LoadingIcon/LoadingIcon.service';
+import SinglePurchaseLink from 'src/components/GiftItem/SinglePurchaseLink';
 
 import PurchaseLinkListingService from './PurchaseLinkListing.service';
 
@@ -18,10 +19,14 @@ class PurchaseLinkListing extends Component {
 
   async componentDidMount () {
     const { giftIdeaId } = this.state;
+    loadingIconService.showIcon();
     const gifts = await PurchaseLinkListingService.fetchGiftsUnderAnIdea(giftIdeaId)
       .catch(error => {
-        throw error;
+        loadingIconService.hideIcon();
+        console.error(error);
       });
+
+    loadingIconService.hideIcon();
 
     if (gifts && gifts.length > 0 && gifts[0].giftIdea && gifts[0].giftIdea.label) {
       this.setState({
@@ -62,6 +67,7 @@ class PurchaseLinkListing extends Component {
             </h4>
           </div>
         </div>
+        <LoadingIcon />
         <div
           className='container'
           style={{ marginTop: '3.5%' }}

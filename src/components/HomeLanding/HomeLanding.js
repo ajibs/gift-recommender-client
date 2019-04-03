@@ -16,7 +16,12 @@ const HomeLanding = () => (
         <Link
           to={'/gift-idea'}
           className='btn btn-secondary my-2'
+          style={{ marginRight: '1%' }}
         >Explore</Link>
+        <Link
+          to={'/gift-suggestion'}
+          className='btn btn-info my-2'
+        >Contribute</Link>
       </p>
     </div>
   </section>

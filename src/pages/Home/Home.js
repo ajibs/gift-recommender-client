@@ -5,6 +5,7 @@ import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GiftIdeaListing from 'src/components/GiftIdea/GiftIdeaListing';
+import GiftSuggestion from 'src/components/GiftIdea/GiftSuggestion';
 import PurchaseLinkListing from 'src/components/GiftItem/PurchaseLinkListing';
 import loadingIconService from 'src/components/LoadingIcon/LoadingIcon.service';
 
@@ -75,6 +76,11 @@ class Home extends Component {
                 exact
                 path='/gift-idea'
                 render={() => <GiftIdeaListing />}
+              />
+              <Route
+                exact
+                path='/gift-suggestion'
+                render={() => <GiftSuggestion />}
               />
               <Route
                 exact
