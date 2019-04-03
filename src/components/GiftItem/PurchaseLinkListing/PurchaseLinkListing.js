@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import SinglePurchaseLink from '../SinglePurchaseLink';
+import LoadingIcon from 'src/components/LoadingIcon';
+import loadingIconService from 'src/components/LoadingIcon/LoadingIcon.service';
+import SinglePurchaseLink from 'src/components/GiftItem/SinglePurchaseLink';
 
 import PurchaseLinkListingService from './PurchaseLinkListing.service';
 
@@ -18,10 +19,14 @@ class PurchaseLinkListing extends Component {
 
   async componentDidMount () {
     const { giftIdeaId } = this.state;
+    loadingIconService.showIcon();
     const gifts = await PurchaseLinkListingService.fetchGiftsUnderAnIdea(giftIdeaId)
       .catch(error => {
-        throw error;
+        loadingIconService.hideIcon();
+        console.error(error);
       });
+
+    loadingIconService.hideIcon();
 
     if (gifts && gifts.length > 0 && gifts[0].giftIdea && gifts[0].giftIdea.label) {
       this.setState({
@@ -31,7 +36,7 @@ class PurchaseLinkListing extends Component {
     }
   }
 
-  displayGiftPurchaseLinks (gifts) {
+  fetchPurchaseLinks (gifts) {
     return gifts.map(gift => {
       if (gift) {
         return (
@@ -49,6 +54,23 @@ class PurchaseLinkListing extends Component {
     });
   }
 
+  displayGiftPurchaseLinks (gifts) {
+    const purchaseLinks = this.fetchPurchaseLinks(gifts);
+    return (
+      <div
+        className='container'
+        style={{ marginTop: '3.5%' }}
+      >
+        <div className='row'>        {purchaseLinks}
+          <p className='jumbotron-heading justify-content-center'>
+            Disclaimer: <strong>The links above are stuff we found online and we do not guarantee their authenticity.
+            Thus take care not to be scammed.</strong>
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   render () {
     const { gifts, giftIdeaLabel } = this.state;
     return (
@@ -62,14 +84,8 @@ class PurchaseLinkListing extends Component {
             </h4>
           </div>
         </div>
-        <div
-          className='container'
-          style={{ marginTop: '3.5%' }}
-        >
-          <div className='row'>
-            {gifts && this.displayGiftPurchaseLinks(gifts)}
-          </div>
-        </div>
+        <LoadingIcon />
+        {gifts && this.displayGiftPurchaseLinks(gifts)}
       </div>
     );
   }
