@@ -4,11 +4,16 @@ import PropTypes from 'prop-types';
 const SinglePurchaseLink = (props) => (
   <div className='col-md-4'>
     <div className='card mb-4 shadow-sm'>
-      <img
-        className={'img-fluid img-thumbnail'}
-        src={props.image_url}
-        alt={'product'}
-      />
+      <a
+        href={props.product_link}
+        target={'blank'}
+      >
+        <img
+          className={'img-fluid img-thumbnail'}
+          src={props.image_url}
+          alt={'product'}
+        />
+      </a>
       <div className='card-body'>
         <p className='card-text'>{props.title}</p>
         <div className='d-flex justify-content-between align-items-center'>
