@@ -32,7 +32,7 @@ const SearchGiftIdea = (props) => {
           className='col-10 col-md-4'
           id={'searchGifts'}
         >
-          <h4 className='jumbotron-heading'>Give us details about the friend you're getting a gift for and voila</h4>
+          <h4 className='jumbotron-heading'>What's your budget?</h4>
           <form
             onSubmit={handleSubmit}
             style={{ marginTop: '6%' }}
