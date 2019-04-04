@@ -1,5 +1,5 @@
 # Gift Recommender - Frontend
-[![Build Status](https://travis-ci.com/ajibs/gift-recommender-service.svg?token=aaVJamdqCM415gwrJWEa&branch=master)](https://travis-ci.com/ajibs/gift-recommender-service)
+[![Build Status](https://travis-ci.com/ajibs/gift-recommender-client.svg?token=aaVJamdqCM415gwrJWEa&branch=master)](https://travis-ci.com/ajibs/gift-recommender-client)
 Discover FANTASTIC GIFTS for friends and family. Built for lazy people that want to dazzle their loved ones.
 
 

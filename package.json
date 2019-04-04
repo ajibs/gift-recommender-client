@@ -8,7 +8,7 @@
     "build": "react-scripts build",
     "dev": "run-p watch:styles start",
     "setup:prod": "npm run build && npm run start:prod",
-    "test": "react-scripts test",
+    "test": "NODE_PATH=. react-scripts test a",
     "eject": "react-scripts eject",
     "build:styles": "node-sass-chokidar ./assets/styles -o public/styles",
     "watch:styles": "yarn build:styles --watch",
