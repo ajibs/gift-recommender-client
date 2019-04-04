@@ -1,8 +1,8 @@
 import requestClient from 'src/libs/HttpRequestClient';
 
 export default class GiftIdeaListingService {
-  static fetchGiftIdeas () {
-    return requestClient.get('/gift-idea')
+  static fetchAllGiftIdeas () {
+    return requestClient.get('/gift-idea/all')
       .then(res => res.data)
       .catch(error => {
         throw error;

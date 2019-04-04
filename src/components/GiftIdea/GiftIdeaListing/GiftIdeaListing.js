@@ -16,7 +16,7 @@ class GiftIdeaListing extends Component {
 
   async componentDidMount () {
     loadingIconService.showIcon();
-    const giftIdeas = await GiftIdeaListingService.fetchGiftIdeas()
+    const giftIdeas = await GiftIdeaListingService.fetchAllGiftIdeas()
       .catch(error => {
         loadingIconService.hideIcon();
 
