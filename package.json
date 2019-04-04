@@ -2,19 +2,19 @@
   "name": "gift-recommender-client",
   "version": "1.0.0",
   "private": true,
-   "scripts": {
+  "scripts": {
     "start": "react-scripts start",
     "start:prod": "nodemon server.js",
     "build": "react-scripts build",
     "dev": "run-p watch:styles start",
     "setup:prod": "npm run build && npm run start:prod",
     "test": "react-scripts test",
-    "test:all": "npm run lint && npm run test",
     "eject": "react-scripts eject",
     "build:styles": "node-sass-chokidar ./assets/styles -o public/styles",
     "watch:styles": "yarn build:styles --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "test:all": "npm run lint && npm run test",
     "precommit": "lint-staged",
     "postcommit": "git update-index --again"
   },
@@ -26,7 +26,8 @@
       ]
     },
     "ignore": [
-      "node_modules/**"
+      "node_modules/**",
+      "build/**"
     ]
   },
   "author": "Bolu Ajibawo",
