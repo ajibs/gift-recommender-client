@@ -1,70 +1,89 @@
-# gift-recommender-client
+# Gift Recommender - Frontend
+[![Build Status](https://travis-ci.com/ajibs/gift-recommender-service.svg?token=aaVJamdqCM415gwrJWEa&branch=master)](https://travis-ci.com/ajibs/gift-recommender-service)
+Discover FANTASTIC GIFTS for friends and family. Built for lazy people that want to dazzle their loved ones.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Feature List
 
-In the project directory, you can run:
+- Search for Gift Ideas based on Budget
+- View Purchase links for Gift Ideas
+- Explore Gift Ideas
+- Contribute Gift Suggestions
 
-### `npm start`
+> This project assumes you have [Git](https://git-scm.com/downloads) installed.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+For developers to get started with this project, you'll need to create a local copy of the project.
 
-### `npm test`
+Run the following in your terminal:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+ git clone https://github.com/ajibs/gift-recommender-client.git
+```
 
-### `npm run build`
+Then change into the local directory, run the following in your terminal:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+cd gift-recommender-client
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Docker
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You'll need to have [Docker](https://www.docker.com/get-started) installed to proceed with setting up the project.
 
-### `npm run eject`
+To start a docker container for `Gift Recommender Client`, run this command in the terminal:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```sh
+./start_container.sh
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> N/B: You might have permission problems on a Unix, please visit the following [link](https://askubuntu.com/questions/409025/permission-denied-when-running-sh-scripts) to resolve potential file permission issues.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The `start container` script will link you to the bash terminal of a running container. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can then proceed to the **Development** Section or the **Linting & Tests** Section to run sample code.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To kickstart the application, run the following in your terminal:
 
-### Code Splitting
+```sh
+npm run dev
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+## Linting and Tests
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+You can run linting and tests by running the following in your terminal:
 
-### Making a Progressive Web App
+```sh
+npm run test:all
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
+## Tech Stack
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- [Git](https://git-scm.com/) - Version Control
+- [React](https://reactjs.org/) - Frontend Library
+- [Node.js](https://nodejs.org/) - JS Runtime Environment
+- [npm](https://www.npmjs.com/) - Package Manager
+- [Express](https://expressjs.com/en/starter/installing.html) - Web Framework
+- [Jest](https://jestjs.io/) - Testing Framework
+- [Heroku](https://heroku.com) - Hosting and Continuous Deployment
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Contributing
 
-### `npm run build` fails to minify
+Contributions are welcome
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Authors
+
+- Bolu Ajibawo - [Medium](https://medium.com/@Bolu_Ajibawo)
+
+
+## License
+
+- [MIT](https://github.com/ajibs/gift-recommender-service/blob/master/LICENSE)
