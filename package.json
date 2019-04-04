@@ -2,21 +2,21 @@
   "name": "gift-recommender-client",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
+   "scripts": {
     "start": "react-scripts start",
     "start:prod": "nodemon server.js",
     "build": "react-scripts build",
     "dev": "run-p watch:styles start",
     "setup:prod": "npm run build && npm run start:prod",
     "test": "react-scripts test",
+    "test:all": "npm run lint && npm run test",
     "eject": "react-scripts eject",
     "build:styles": "node-sass-chokidar ./assets/styles -o public/styles",
     "watch:styles": "yarn build:styles --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "precommit": "lint-staged",
-    "postcommit": "git update-index --again",
-    "heroku:deploy": "heroku container:push web --app thawing-reef-23645 && heroku container:release web --app thawing-reef-23645"
+    "postcommit": "git update-index --again"
   },
   "lint-staged": {
     "linters": {
