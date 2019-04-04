@@ -86,4 +86,4 @@ Contributions are welcome
 
 ## License
 
-- [MIT](https://github.com/ajibs/gift-recommender-service/blob/master/LICENSE)
+- [MIT](https://github.com/ajibs/gift-recommender-client/blob/master/LICENSE)
