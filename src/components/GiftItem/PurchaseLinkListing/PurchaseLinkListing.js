@@ -37,6 +37,11 @@ class PurchaseLinkListing extends Component {
     return gifts && gifts.length > 0 && gifts[0].giftIdea && gifts[0].giftIdea.label;
   }
 
+  validatePurchaseLink (purchaseLink) {
+    return purchaseLink && purchaseLink.id && purchaseLink.title &&
+          purchaseLink.product_link && purchaseLink.image_url;
+  }
+
   async componentDidMount () {
     const { giftIdeaId } = this.state;
     loadingIconService.showIcon();
@@ -60,7 +65,7 @@ class PurchaseLinkListing extends Component {
 
   composePurchaseLinks (gifts) {
     return gifts.map(gift => {
-      if (gift) {
+      if (this.validatePurchaseLink(gift)) {
         return (
           <SinglePurchaseLink
             key={gift.id}
