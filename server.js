@@ -16,4 +16,5 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+// eslint-disable-next-line
 app.listen(PORT, () => console.info(`React Server listening on ${PORT}`));
