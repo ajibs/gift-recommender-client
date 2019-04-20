@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gift-recommender-client
+  labels:
+    app: gift-recommender-client
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      name: http
+  selector:
+    app: gift-recommender-client
