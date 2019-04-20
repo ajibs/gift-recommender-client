@@ -6,6 +6,15 @@ import SinglePurchaseLink from 'src/components/GiftItem/SinglePurchaseLink';
 
 import PurchaseLinkListingService from './PurchaseLinkListing.service';
 
+const NoneAvailable = () => (
+  <p
+    id='none-available'
+    style={{ display: 'none' }}
+  >
+        None Available at the Moment
+  </p>
+);
+
 class PurchaseLinkListing extends Component {
   constructor (props) {
     super(props);
@@ -15,6 +24,17 @@ class PurchaseLinkListing extends Component {
       giftIdeaLabel: ''
     };
     this.displayGiftPurchaseLinks = this.displayGiftPurchaseLinks.bind(this);
+  }
+
+  displayNoneAvailable () {
+    const noneAvailableText = document.getElementById('none-available');
+    if (noneAvailableText && noneAvailableText.style && noneAvailableText.style.display) {
+      noneAvailableText.style.display = 'block';
+    }
+  }
+
+  validateGiftHasPurchaseLinks (gifts) {
+    return gifts && gifts.length > 0 && gifts[0].giftIdea && gifts[0].giftIdea.label;
   }
 
   async componentDidMount () {
@@ -28,15 +48,17 @@ class PurchaseLinkListing extends Component {
 
     loadingIconService.hideIcon();
 
-    if (gifts && gifts.length > 0 && gifts[0].giftIdea && gifts[0].giftIdea.label) {
+    if (this.validateGiftHasPurchaseLinks(gifts)) {
       this.setState({
         gifts,
         giftIdeaLabel: gifts[0].giftIdea.label
       });
+    } else {
+      this.displayNoneAvailable();
     }
   }
 
-  fetchPurchaseLinks (gifts) {
+  composePurchaseLinks (gifts) {
     return gifts.map(gift => {
       if (gift) {
         return (
@@ -55,7 +77,7 @@ class PurchaseLinkListing extends Component {
   }
 
   displayGiftPurchaseLinks (gifts) {
-    const purchaseLinks = this.fetchPurchaseLinks(gifts);
+    const purchaseLinks = this.composePurchaseLinks(gifts);
     return (
       <div
         className='container'
@@ -82,10 +104,11 @@ class PurchaseLinkListing extends Component {
             <h4 className='jumbotron-heading'>
                             Purchase links to Gift Idea: <strong>{giftIdeaLabel}</strong>
             </h4>
+            <NoneAvailable />
           </div>
         </div>
         <LoadingIcon />
-        {gifts && this.displayGiftPurchaseLinks(gifts)}
+        {this.validateGiftHasPurchaseLinks(gifts) && this.displayGiftPurchaseLinks(gifts)}
       </div>
     );
   }
