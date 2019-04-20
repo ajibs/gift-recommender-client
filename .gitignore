@@ -23,3 +23,6 @@ yarn-error.log*
 
 public/styles
 .idea
+
+deploy.sh
+gcp/deployment.yaml
