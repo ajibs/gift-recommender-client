@@ -11,7 +11,7 @@ class HttpRequestClient {
         transformResponse: [
           (data) => this.handleResponse(data)
         ],
-        timeout: 5000
+        timeout: 4000
       });
     }
 
