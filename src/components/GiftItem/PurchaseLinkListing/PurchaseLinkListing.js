@@ -33,8 +33,8 @@ class PurchaseLinkListing extends Component {
     }
   }
 
-  validateGiftHasPurchaseLinks (gifts) {
-    return gifts && gifts.length > 0 && gifts[0].giftIdea && gifts[0].giftIdea.label;
+  validatePurchaseLinksOfGiftIdea (purchaseLinks) {
+    return purchaseLinks && purchaseLinks.length > 0 && purchaseLinks[0].giftIdea && purchaseLinks[0].giftIdea.label;
   }
 
   validatePurchaseLink (purchaseLink) {
@@ -53,7 +53,7 @@ class PurchaseLinkListing extends Component {
 
     loadingIconService.hideIcon();
 
-    if (this.validateGiftHasPurchaseLinks(gifts)) {
+    if (this.validatePurchaseLinksOfGiftIdea(gifts)) {
       this.setState({
         gifts,
         giftIdeaLabel: gifts[0].giftIdea.label
@@ -113,7 +113,7 @@ class PurchaseLinkListing extends Component {
           </div>
         </div>
         <LoadingIcon />
-        {this.validateGiftHasPurchaseLinks(gifts) && this.displayGiftPurchaseLinks(gifts)}
+        {this.validatePurchaseLinksOfGiftIdea(gifts) && this.displayGiftPurchaseLinks(gifts)}
       </div>
     );
   }
