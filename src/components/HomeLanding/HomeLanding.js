@@ -5,8 +5,7 @@ const HomeLanding = () => (
   <section className='jumbotron text-center'>
     <div className='container'>
       <h1 className='jumbotron-heading'>Gift Recommender</h1>
-      <p className='lead text-muted'>Discover <b>FANTASTIC GIFTS</b> for friends and family. Built for lazy people
-                    that want to dazzle their loved ones.</p>
+      <p className='lead text-muted'>Discover <b>cool and affordable gifts</b> for your loved ones.</p>
       <p>
         <Link
           to='/'
