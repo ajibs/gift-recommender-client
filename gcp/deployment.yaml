@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gift-recommender-client
+  labels:
+    app: gift-recommender-client
+spec:
+  template:
+    metadata:
+      labels:
+        app: gift-recommender-client
+    spec:
+      containers:
+        - image: gcr.io/experiments-237010/gift-recommender-client:latest
+          name: gift-recommender-client
+          ports:
+            - containerPort: 80
+              protocol: TCP
+              name: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 60
+            initialDelaySeconds: 10
+          env:
+            # Application
+            - name: NODE_ENV
+              value: "production"
+            - name: REACT_APP_HOST
+              value: "http://34.66.91.226/"
+            - name: NODE_PATH
+              value: "."
+            - name: PORT
+              value: "80"
